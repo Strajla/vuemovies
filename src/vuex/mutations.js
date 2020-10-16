@@ -3,6 +3,7 @@ export const mutations = {
         state.movies = payload
     },
     deleteMovie(state,id) {
+        console.log('mutacija')
         state.movies = state.movies.filter(movies => movies.id !== id);
     }
 } 

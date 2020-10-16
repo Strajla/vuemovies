@@ -6,8 +6,10 @@ export const actions= {
         state.commit('setMovies', data);
     },
 
-    async deleteMovie(state, payload) {
-        await movies.deleteMovie(payload);
-        state.commit('deleteMovie', payload)
+    deleteMovie(state, id) {
+        console.log('akcija')
+        movies.deleteMovie(id);
+        console.log('akcija posle await')
+        state.commit('deleteMovie', id)
     }
 } 

@@ -2,10 +2,11 @@
   <div class="hello">
     <h1>Movies</h1>
 
-    <movie-card v-for="movie in movies" :key="movie.id" :movie="movie"> 
+    <div class="d-flex justify-content-around  flex-wrap">
+    <movie-card v-for="movie in movies" :key="movie.id" :movie="movie" > 
 
     </movie-card>
-
+    </div>
   </div>
 </template>
 
@@ -45,6 +46,10 @@ export default {
 <style scoped>
 h3 {
   margin: 40px 0 0;
+}
+
+h1 {
+  margin-bottom: 30px;
 }
 ul {
   list-style-type: none;

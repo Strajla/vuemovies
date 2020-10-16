@@ -1,9 +1,7 @@
 <template>
-    <div class="d-flex justify-content-center">
-        <h2>Naslov</h2>
-        <div class="card" style="width: 18rem;">
 
-           
+<div >
+        <div class="card" style="width: 350px; margin-bottom: 30px;">
             <img class="card-img-top" :src="movie.imageUrl" alt="Card image cap">
             <div class="card-body">
             <h5 class="card-title">{{movie.title}}</h5>
@@ -44,6 +42,8 @@
 
   </script>
 
-  <style lang="stylus" scoped>
-  
+  <style scoped>
+    img {
+        height: 500px;
+    }
   </style>

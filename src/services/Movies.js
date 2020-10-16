@@ -12,7 +12,7 @@ class Movies {
 
     
     deleteMovie(id) {
-        return this.axios.delete(`/movies/${id}`)
+        return axios.delete(`/movies/${id}`)
     }
 }
 
