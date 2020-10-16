@@ -1,13 +1,35 @@
 <template>
     <div id="nav">
       <router-link to="/" class="navbar-brand">Movies</router-link> 
-      <router-link to="/" class="navbar-brand">Add Movies</router-link> 
+      <router-link to="/" class="navbar-brand">Add Movies</router-link>
+      <input @input="handleSearchTextChange" /> 
     </div>
 </template>
 
 <script>
+import {mapGetters, mapMutations} from 'vuex'
+
 export default {
-    name: 'NavBar'
+
+    name: 'NavBar',
+    components: {
+    
+  },
+  
+  computed: {
+      ...mapGetters([
+          'movies',
+          'filteredMovies'
+      ]),
+  },
+    methods: {
+        ...mapMutations( [
+          'setSearchText'
+        ]),
+   handleSearchTextChange(event) {
+     this.setSearchText(event.target.value)
+   }
+}
 }
 </script>
 

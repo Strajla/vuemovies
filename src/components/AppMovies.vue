@@ -3,9 +3,15 @@
     <h1>Movies</h1>
 
     <div class="d-flex justify-content-around  flex-wrap">
-    <movie-card v-for="movie in movies" :key="movie.id" :movie="movie" > 
+   
+
+   <movie-card v-for="movie in filteredMovies" :key="movie.id" :movie="movie" > 
 
     </movie-card>
+     <div v-if="!filteredMovies.length">
+        <h1>We are sorry, but there is no movie with this title</h1>
+    </div>
+
     </div>
   </div>
 </template>
@@ -13,6 +19,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 import MovieCard from './MovieCard'
+import {store} from '../vuex/store'
 
 
 export default {
@@ -23,8 +30,10 @@ export default {
 
   computed: {
     ...mapGetters([
-      'movies'
-    ])
+       'movies',
+          'filteredMovies'
+  
+      ]),
   },
 
   methods: {
@@ -35,6 +44,12 @@ export default {
 
   created() {
     this.fetchMovies();
+     },
+
+     
+    beforeRouteEnter(to,from, next) {
+      console.log('AppMovies BeforeRouteEnter', to,from, next );
+      console.log("STORE: ", {movies: store.movies} )
   }
 
 }
