@@ -9,13 +9,23 @@
     <div class="d-flex justify-content-around  flex-wrap">
    
 
-    <movie-card v-for="movie in filteredMovies" :key="movie.id" :movie="movie" @movie-selected="handleMovieSelected"> 
+    
+    <movie-card v-for="movie in filteredMovies" :key="movie.id" 
+      :movie="movie" @movie-selected="handleMovieSelected" 
+      :isSelected="getIsMovieSelected(movie)"> 
+
     </movie-card>
      <div v-if="!filteredMovies.length">
         <h1>We are sorry, but there is no movie with this title</h1>
     </div>
 
     </div>
+
+    <div class="card-body">
+        <button type="button" @click="selectAll" class="btn btn-outline-dark">Select All</button>
+        <button type="button" @click="deselectAll" class="btn btn-outline-warning">Deselect All</button>
+    </div>
+
   </div>
 </template>
 
@@ -46,17 +56,31 @@ export default {
       // }
   },
     methods: {
+
         ...mapActions( [
-            'fetchMovies'
-        ]),
-        handleMovieSelected(movie) {
-        console.log("Movie SELECTED", {movie});
-        if (this.selectedMovies.find(m =>m.id == movie.id)) {
-        return;
-}
-this.selectedMovies.push(movie);
- }
- },
+          'fetchMovies'
+      ]),
+
+      handleMovieSelected(movie) {
+      console.log("Movie SELECTED", {movie});
+        if (this.getIsMovieSelected(movie)) {
+          return;
+        }
+        this.selectedMovies.push(movie);
+      },
+      getIsMovieSelected(movie) {
+        return !!this.selectedMovies.find(m=>m.id == movie.id); //{} ili null
+        //false true
+        //true false !!-pretvaranje u boolean
+      },
+      selectAll() {
+        this.selectedMovies = this.filteredMovies.map((movie) => movie);
+      },
+      deselectAll() {
+        this.selectedMovies = [];
+      },
+    },
+
     created() {
       this.fetchMovies();
     },
