@@ -9,7 +9,7 @@ export default {
   name: 'AppMovies',
   props: {
     
-  }
+  },
 }
 </script>
 
