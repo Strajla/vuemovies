@@ -8,5 +8,9 @@ export const mutations = {
     },
     setSearchText(state, searchText) {
         state.searchText = searchText;
+    },
+
+    setCounter(state, payload){
+        state.counter = payload;
     }
 } 

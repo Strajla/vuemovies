@@ -2,7 +2,7 @@
     <div id="nav">
       <router-link to="/" class="navbar-brand">Movies</router-link> 
       <router-link to="/" class="navbar-brand">Add Movies</router-link>
-      <input @input="handleSearchTextChange" /> 
+      <input class="form-control" placeholder="Search any movie you like" @input="handleSearchTextChange" /> 
     </div>
 </template>
 
