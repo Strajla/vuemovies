@@ -45,7 +45,7 @@
 
     <div class="d-flex justify-content-around  flex-wrap">
       <movie-card
-        v-for="movie in sortedFilteredMovies"
+        v-for="movie in moviesPage"
         :key="movie.id"
         :movie="movie"
         @movie-selected="handleMovieSelected"
@@ -69,6 +69,11 @@
         Deselect All
       </button>
     </div>
+
+    <pagination-buttons
+      :num-of-items="sortedFilteredMovies.length"
+      @current-page-changed="goToPage"
+    />
   </div>
 </template>
 
@@ -76,16 +81,22 @@
 import { mapGetters, mapActions } from "vuex";
 import MovieCard from "./MovieCard";
 import { store } from "../vuex/store";
+import PaginationButtons from "./PaginationButtons";
+
+const PAGE_SIZE = 2;
+
 export default {
   name: "AppMovies",
   components: {
     MovieCard,
+    PaginationButtons,
   },
   data() {
     return {
       selectedMovies: [],
       sortingCriteria: "title",
       sortDirection: -1,
+      currentPage: 1,
     };
   },
   computed: {
@@ -101,6 +112,13 @@ export default {
             ? this.sortDirection
             : -1 * this.sortDirection
         );
+    },
+
+    moviesPage() {
+      return this.sortedFilteredMovies.slice(
+        (this.currentPage - 1) * PAGE_SIZE,
+        this.currentPage * PAGE_SIZE
+      );
     },
   },
   methods: {
@@ -126,6 +144,10 @@ export default {
     },
     setSortingDirection(direction) {
       this.sortDirection = direction;
+    },
+
+    goToPage(page) {
+      this.currentPage = page;
     },
   },
   created() {
