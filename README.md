@@ -1,4 +1,7 @@
+Simple movie app with api
+
 # vuemovies
+
 
 ## Project setup
 ```
