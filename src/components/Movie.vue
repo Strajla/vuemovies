@@ -6,11 +6,9 @@
 
 <script>
 export default {
-  name: 'AppMovies',
-  props: {
-    
-  },
-}
+  name: "AppMovies",
+  props: {},
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

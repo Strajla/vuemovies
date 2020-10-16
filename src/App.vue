@@ -1,21 +1,18 @@
 <template>
   <div id="app">
-
     <NavBar />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
-
-import NavBar from './components/NavBar'
+import NavBar from "./components/NavBar";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    NavBar
-  }
-}
-
+    NavBar,
+  },
+};
 </script>
 
 <style>

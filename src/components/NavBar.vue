@@ -1,37 +1,36 @@
 <template>
-    <div id="nav">
-      <router-link to="/" class="navbar-brand">Movies</router-link> 
-      <router-link to="/" class="navbar-brand">Add Movies</router-link>
-      <input class="form-control" placeholder="Search any movie you like" @input="handleSearchTextChange" /> 
-    </div>
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <form class="form-inline">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search movie you want"
+        aria-label="Search"
+        @input="handleSearchTextChange"
+      />
+    </form>
+    <router-link to="/" class="navbar-brand">Movies</router-link>
+    <router-link to="/" class="navbar-brand">Add Movies</router-link>
+  </nav>
 </template>
 
 <script>
-import {mapGetters, mapMutations} from 'vuex'
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
+  name: "NavBar",
+  components: {},
 
-    name: 'NavBar',
-    components: {
-    
-  },
-  
   computed: {
-      ...mapGetters([
-          'movies',
-          'filteredMovies'
-      ]),
+    ...mapGetters(["movies", "filteredMovies"]),
   },
-    methods: {
-        ...mapMutations( [
-          'setSearchText'
-        ]),
-   handleSearchTextChange(event) {
-     this.setSearchText(event.target.value)
-   }
-}
-}
+  methods: {
+    ...mapMutations(["setSearchText"]),
+    handleSearchTextChange(event) {
+      this.setSearchText(event.target.value);
+    },
+  },
+};
 </script>
 
-<style lang="stylus" scoped>
-</style> 
+<style lang="stylus" scoped></style>

@@ -1,24 +1,28 @@
 import Vuex from "vuex";
-import Vue from 'vue'
-import {mutations} from './mutations'
-import {actions} from './actions'
+import Vue from "vue";
+import { mutations } from "./mutations";
+import { actions } from "./actions";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    state: {
-        counter: 0,
+  state: {
+    counter: 0,
 
-        movies: [],
-        searchText: ''
-    },
+    movies: [],
+    searchText: "",
+  },
 
-    getters: {
-        movies: ({movies}) => movies,
-        counter: ({counter}) => counter,
-        filteredMovies: state =>state.movies.filter(movie =>movie.title.toLowerCase().indexOf(state.searchText.toLowerCase()) > -1)
-    },
+  getters: {
+    movies: ({ movies }) => movies,
+    counter: ({ counter }) => counter,
+    filteredMovies: (state) =>
+      state.movies.filter(
+        (movie) =>
+          movie.title.toLowerCase().indexOf(state.searchText.toLowerCase()) > -1
+      ),
+  },
 
-    mutations,
-    actions
-}) 
+  mutations,
+  actions,
+});
