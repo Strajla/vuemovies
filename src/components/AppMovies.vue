@@ -7,9 +7,20 @@
 <script>
 export default {
   name: 'AppMovies',
-  props: {
-    
-  }
+
+    data () {
+        return {
+            movie: {
+                title: '',
+                director: '',
+                imageUrl: '',
+                duration: '',
+                releaseDate: '',
+                genre: ''
+                }
+         }
+}
+
 }
 </script>
 
